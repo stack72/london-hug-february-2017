@@ -60,7 +60,7 @@ module "compute" {
   os_profile_admin_username = "myadmin"
   os_profile_admin_password = "Password1234!"
 
-  vhd_containers = ["${module.hug_storage.primary_blob_endpoint}${module.hug_storage.main_container_name}}"]
+  vhd_containers = ["${module.hug_storage.primary_blob_endpoint}${module.hug_storage.main_container_name}"]
   private_subnet_id = "${module.hub_networking.private_subnet_id}"
   lb_backend_address_pool_id = "${module.load_balancing.lb_backend_address_pool_id}"
 

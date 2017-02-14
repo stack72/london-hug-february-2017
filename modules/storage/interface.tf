@@ -33,5 +33,5 @@ output "primary_blob_endpoint" {
 }
 
 output "main_container_name" {
-  value = "${azurerm_storage_container.london_hug.name[0]}"
+  value = "${var.container_name[0]}"
 }
