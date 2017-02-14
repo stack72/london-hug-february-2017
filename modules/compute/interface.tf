@@ -18,6 +18,21 @@ variable "upgrade_policy" {
   default = "Manual"
 }
 
+variable "os_profile_name_prefix" {
+  type = "string"
+  description = "The prefix to give all the machines in the ScaleSet"
+}
+
+variable "os_profile_admin_username" {
+  type = "string"
+  description = "The admin username for the machines in the ScaleSet"
+}
+
+variable "os_profile_admin_password" {
+  type = "string"
+  description = "The admin password for the machines in the ScaleSet"
+}
+
 variable "compute_instance_type" {
   type = "string"
   description = "The size of the instances in the ScaleSet"

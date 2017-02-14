@@ -11,9 +11,9 @@ resource "azurerm_virtual_machine_scale_set" "london_hug" {
   }
 
   os_profile {
-    computer_name_prefix = "${os_profile_computer_name_prefix}"
-    admin_username = "${os_profile_admin_username}"
-    admin_password = "${os_profile_admin_password}"
+    computer_name_prefix = "${var.os_profile_name_prefix}"
+    admin_username = "${var.os_profile_admin_username}"
+    admin_password = "${var.os_profile_admin_password}"
   }
 
   network_profile {
@@ -30,7 +30,6 @@ resource "azurerm_virtual_machine_scale_set" "london_hug" {
     name 		   = "os-disk"
     caching        = "ReadWrite"
     create_option  = "FromImage"
-//    vhd_containers = [ "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}" ]
     vhd_containers = ["${var.vhd_containers}"]
   }
 

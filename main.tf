@@ -40,7 +40,8 @@ module "load_balancing" {
   source = "./modules/loadbalancing"
 
   loadbalancer_name = "LondonHUGLoadbalancer"
-
+  location = "${var.location}"
+  resource_group_name = "${module.hug_resource_group.name}"
 
   public_subnet_id = "${module.hub_networking.public_subnet_id}"
 }
@@ -53,11 +54,19 @@ module "compute" {
   resource_group_name = "${module.hug_resource_group.name}"
 
   compute_capacity = "3"
-  compute_instance = "Standard_A0"
+  compute_instance_type = "Standard_A0"
 
   os_profile_name_prefix = "scaleset-vm-"
   os_profile_admin_username = "myadmin"
   os_profile_admin_password = "Password1234!"
+
+  vhd_containers = ["${module.hug_storage.primary_blob_endpoint}${module.hug_storage.main_container_name}}"]
+  private_subnet_id = "${module.hub_networking.private_subnet_id}"
+  lb_backend_address_pool_id = "${module.load_balancing.lb_backend_address_pool_id}"
+
+  image_publisher = "Canonical"
+  image_name = "UbuntuServer"
+  image_version = "16.04.0-LTS"
 }
 
 output "loadbalancer_ip_address" {

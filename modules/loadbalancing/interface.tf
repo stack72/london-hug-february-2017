@@ -23,3 +23,7 @@ variable "ip_address_allocation" {
   description = "The IP address allocation type"
   default = "Dynamic"
 }
+
+output "lb_backend_address_pool_id" {
+  value = "${azurerm_lb_backend_address_pool.london_hug.id}"
+}

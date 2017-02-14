@@ -27,3 +27,11 @@ variable "container_access_type" {
   type = "string"
   description = "The 'interface' for access the container provides"
 }
+
+output "primary_blob_endpoint" {
+  value = "${azurerm_storage_account.london_hug.primary_blob_endpoint}"
+}
+
+output "main_container_name" {
+  value = "${azurerm_storage_container.london_hug.name[0]}"
+}
