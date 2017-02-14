@@ -5,7 +5,7 @@ resource "azurerm_lb" "london_hug" {
 
   frontend_ip_configuration {
     name                          = "default"
-    subnet_id                     = "${var.public_subnet_id}"
+    public_ip_address_id          = "${var.public_ip_id}"
     private_ip_address_allocation = "${var.ip_address_allocation}"
   }
 }

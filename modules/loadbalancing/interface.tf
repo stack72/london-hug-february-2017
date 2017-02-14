@@ -13,9 +13,9 @@ variable "resource_group_name" {
   description = "The name of the resource group in which to create the loadbalancer"
 }
 
-variable "public_subnet_id" {
+variable "public_ip_id" {
   type = "string"
-  description = "The ID of the public subnet in which to put the Loadbalancer"
+  description = "The ID of the public IP address in which to put the Loadbalancer"
 }
 
 variable "ip_address_allocation" {

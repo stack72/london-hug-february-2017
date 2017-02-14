@@ -34,3 +34,7 @@ output "private_subnet_id" {
 output "public_ip" {
   value = "${azurerm_public_ip.london_hug.ip_address}"
 }
+
+output "public_ip_id" {
+  value = "${azurerm_public_ip.london_hug.id}"
+}

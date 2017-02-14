@@ -43,7 +43,7 @@ module "load_balancing" {
   location = "${var.location}"
   resource_group_name = "${module.hug_resource_group.name}"
 
-  public_subnet_id = "${module.hub_networking.public_subnet_id}"
+  public_ip_id = "${module.hub_networking.public_ip_id}"
 }
 
 module "compute" {
