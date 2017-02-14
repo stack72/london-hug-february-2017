@@ -1,4 +1,4 @@
-resource "azurerm_virtual_machine_scale_set" "test" {
+resource "azurerm_virtual_machine_scale_set" "london_hug" {
   name                = "${var.scale_set_name}"
   location            = "${var.location}"
   resource_group_name = "${var.resource_group_name}"
@@ -30,13 +30,15 @@ resource "azurerm_virtual_machine_scale_set" "test" {
     name 		   = "os-disk"
     caching        = "ReadWrite"
     create_option  = "FromImage"
-    vhd_containers = [ "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}" ]
+//    vhd_containers = [ "${azurerm_storage_account.test.primary_blob_endpoint}${azurerm_storage_container.test.name}" ]
+    vhd_containers = ["${var.vhd_containers}"]
   }
 
+
   storage_profile_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "14.04.2-LTS"
+    publisher = "${var.image_publisher}"
+    offer     = "${var.image_name}"
+    sku       = "${var.image_version}"
     version   = "latest"
   }
 }
